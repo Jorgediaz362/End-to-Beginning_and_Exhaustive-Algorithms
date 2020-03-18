@@ -57,7 +57,7 @@ bool is_nonincreasing(const sequence& A) {
   	int s = A.size();
   	int current = A[0];
   	for(int i = 1; i < s; i++) {
-  		if(current > A[i])
+  		if(current < A[i])
   			return false;
       current = A[i];
   	}
