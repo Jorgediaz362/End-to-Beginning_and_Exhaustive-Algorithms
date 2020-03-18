@@ -52,7 +52,21 @@ sequence random_sequence(size_t size, unsigned seed, int max_element) {
     return result;
 }
 
-bool is_nonincreasing(const sequence& A) {  
+bool is_nonincreasing(const sequence& A) {
+
+  	int s = A.size();
+  	int current = A[0];
+  	for(int i = 1; i < s; i++) {
+  		if(current > A[i])
+  			return false;
+  	}
+  
+  	return true;
+  	
+  }
+
+sequence longest_nonincreasing_end_to_beginning(const sequence& A) {
+  
   const size_t n = A.size();
   
   // populate the array H with 0 values
