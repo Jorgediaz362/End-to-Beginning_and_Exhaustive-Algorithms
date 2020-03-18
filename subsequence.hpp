@@ -52,21 +52,7 @@ sequence random_sequence(size_t size, unsigned seed, int max_element) {
     return result;
 }
 
-bool is_nonincreasing(const sequence& A) {
-
-  	int s = A.size();
-  	int current = A[0];
-  	for(int i = 1; i < s; i++) {
-  		if(current > A[i])
-  			return false;
-  	}
-  
-  	return true;
-  	
-  }
-
-sequence longest_nonincreasing_end_to_beginning(const sequence& A) {
-  
+bool is_nonincreasing(const sequence& A) {  
   const size_t n = A.size();
   
   // populate the array H with 0 values
@@ -75,10 +61,11 @@ sequence longest_nonincreasing_end_to_beginning(const sequence& A) {
   // calculate the values of array H
   // note that i has to be declared signed, to avoid an infinite loop, since
   // the loop condition is i >= 0
+  
   for (signed int i = n-2;  i>= 0; i--) {
     for (size_t j = i+1; j < n ; j++) {
-      // TODO: write the statements that compute the value of
-      // H[i] based on conditions that involve A[i], A[j] and H[j]
+      	if(A[i] >= A[j] && H[i] < H[j] + 1)
+      		H[i] = H[j] + 1;
     }
   }
   
@@ -96,9 +83,9 @@ sequence longest_nonincreasing_end_to_beginning(const sequence& A) {
   size_t index = max-1, j = 0;
   for (size_t i = 0; i < n; ++i) {
     if (H[i] == index) {
-      // TODO: write the statements to add A[i] to the
-      // sequence R by storing it into R[j], decrement
-      // index and increment j
+      	R[j] = A[i];
+      	index--;
+      	j++;
     }
   }
   
