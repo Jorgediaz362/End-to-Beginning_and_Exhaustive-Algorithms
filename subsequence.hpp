@@ -130,11 +130,6 @@ sequence longest_nonincreasing_powerset(const sequence& A) {
     for (size_t i = 1; i <= k; ++i) {
       candidate.push_back(A[stack[i]-1]);
     }
-    // TODO: write the if statement to test whether candidate
-    // determines a non-increasing sequence AND has a size
-    // larger than the size of the current best if both 
-    // conditions are satisfied, then stored candidate 
-    // in best
     if(candidate.size() > best.size() && is_nonincreasing(candidate)){
     	best = candidate;
     }
