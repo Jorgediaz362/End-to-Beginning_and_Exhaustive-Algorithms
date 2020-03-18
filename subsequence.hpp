@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 // subsequence.hpp
 //
-// Two algorithms for solving the longest non-increasing subsequence problem.
+// Jorge Diaz & Jacqueline Isabel Cardenas
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -59,7 +59,7 @@ bool is_nonincreasing(const sequence& A) {
   	for(int i = 1; i < s; i++) {
   		if(current < A[i])
   			return false;
-      current = A[i];
+  		current = A[i];
   	}
   
   	return true;
@@ -135,6 +135,9 @@ sequence longest_nonincreasing_powerset(const sequence& A) {
     // larger than the size of the current best if both 
     // conditions are satisfied, then stored candidate 
     // in best
+    if(candidate.size() > best.size() && is_nonincreasing(candidate)){
+    	best = candidate;
+    }
   }
   return best;
 }
